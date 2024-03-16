@@ -1,0 +1,147 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"label": "Install App Dependencies",
+			"command": "pwsh",
+			
+			"args": [
+				"-F","10-install-appdependencies.ps1"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}/10-setup"
+			},
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		},
+		{
+			"type": "shell",
+			"label": "Install Web Dependencies",
+			"command": "pwsh",
+			"args": [
+				"-F","10-install-webdependencies.ps1"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}/10-setup"
+			},
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		},
+		{
+			"type": "shell",
+			"label": "Run NATS locally",
+			"command": "pwsh",
+			"args": [
+				"-F","10-start-onmac.ps1"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}/10-server"
+			},
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		},
+		{
+			"type": "shell",
+			"label": "Build and Start",
+			"command": "pwsh",
+			"args": [
+				"-F","30-build-start.ps1"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}/40-build"
+			},
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		},
+		{
+			"type": "shell",
+			"label": "Web Dev",
+			"command": "pnpm",
+			"args": [
+				"dev"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}/.koksmat/web"
+			},
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		},
+		{
+			"type": "shell",
+			"label": "Web Start",
+			"command": "pnpm",
+			"args": [
+				"start"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}/.koksmat/web"
+			},
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		},
+		{
+			"type": "shell",
+			"label": "Bump version",
+			"command": "koksmat-release",
+			"args": [
+				"bump",
+				"patch",
+				"."
+
+			],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		},
+		{
+			"type": "shell",
+			"label": "Release GitHub",
+			"command": "koksmat-release",
+			"args": [
+				"release",
+				"github",
+				"."
+
+			],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		},
+		{
+			"type": "shell",
+			"label": "Update Web Deployment",
+			"command": "pwsh",
+			"args": [
+				"-F","20-web.ps1"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}/60-provision"
+			},
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		},		
+	]
+}

@@ -1,0 +1,1 @@
+go install github.com/nats-io/nats-top@latest
