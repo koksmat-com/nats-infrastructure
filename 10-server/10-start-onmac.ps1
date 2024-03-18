@@ -18,4 +18,4 @@ else{
     Set-Location "$PSScriptRoot/../.koksmat/nats/"
    
 }
- /opt/homebrew/opt/nats-server/bin/nats-server  -js -c dev.conf
+ /opt/homebrew/opt/nats-server/bin/nats-server  -js  -c dev.conf

@@ -1,7 +1,10 @@
 config:
+  websocket:
+    enabled: true
+    no_tls: true
   cluster:
     enabled: true
-    replicas: 3
+    replicas: 1
   jetstream:
     enabled: true
     fileStore:
