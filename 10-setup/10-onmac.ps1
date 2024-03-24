@@ -34,3 +34,4 @@ Removing: /opt/homebrew/Cellar/nats-server/2.10.9... (8 files, 12.9MB)
 brew install nats-server
 brew tap nats-io/nats-tools
 brew install nats-io/nats-tools/nats
+brew install mkcert
