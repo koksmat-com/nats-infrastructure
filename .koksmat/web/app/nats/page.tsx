@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import { ShowcaseCard } from "./components/ShowCaseCard";
-import NatsLog from "./components/NatsLog";
-import ShowNatsLog from "../login/components/nats";
+import NatsLog from "./components/Nats-Server";
+import ShowNatsLogUsingSocketConnection from "./components/Nats-Socket";
 interface ShowCaseProps {
   component: ReactElement;
   name: string;
@@ -14,7 +14,12 @@ export default function Home() {
     },
     {
       name: "NatsLog 1",
-      component: <ShowNatsLog subject="echo" />,
+      component: (
+        <ShowNatsLogUsingSocketConnection
+          subject="echo"
+          servers={process.env.NATSSOCKET ?? "wss://0.0.0.0:433"}
+        />
+      ),
     },
   ];
   return (

@@ -22,10 +22,11 @@ func HealthPingPost() usecase.Interactor {
 	}
 	u := usecase.NewInteractor(func(ctx context.Context, input Request, output *string) error {
 
-		_, err := execution.ExecutePowerShell("john", "*", "nats-infrastructure", "00-health", "10-ping.ps1", "", "-pong", input.Pong)
+		x, err := execution.ExecutePowerShell("john", "*", "nats-infrastructure", "00-health", "10-ping.ps1", "", "-pong", input.Pong)
 		if err != nil {
 			return err
 		}
+		output = &x
 
 		return err
 

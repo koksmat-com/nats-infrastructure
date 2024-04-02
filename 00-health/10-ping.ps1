@@ -11,6 +11,8 @@ param(
 #
 # Ping
 
-write-host $pong
+write-host "line 1" $pong
+write-host "line 2" $pong
+write-host "line 3" $pong
 
 

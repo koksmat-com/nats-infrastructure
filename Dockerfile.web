@@ -11,13 +11,31 @@ COPY --from=node /usr/local/include /usr/local/include
 COPY --from=node /usr/local/bin /usr/local/bin
 
 
+RUN apk add go
 
+
+ENV GOBIN="/usr/local/bin"
+RUN go install github.com/nats-io/natscli/nats@latest
+RUN go install github.com/nats-io/nats-server/v2@latest
+RUN nats context add nats --server nats:4222 --description "NATS Prod" --select
+
+RUN apk update
+RUN apk add --upgrade powershell   
+RUN apk add go
+
+WORKDIR /koksmat
+COPY . .
+WORKDIR /koksmat/.koksmat/app
+# This will make the nats-infrastructure CLI available in the container
+RUN go install              
 
 WORKDIR /koksmat/.koksmat/web
-COPY ./.koksmat/web .
+
 RUN npm install -g pnpm
 RUN pnpm install
 RUN pnpm build
+
+
 
 EXPOSE 4334
 

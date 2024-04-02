@@ -21,7 +21,8 @@ description: Describe the main purpose of this kitchen
 # nats-infrastructure
 `
 	magicapp.Setup(".env")
-	magicapp.RegisterServeCmd("nats-infrastructure", description, "0.0.1", 8080)
+	magicapp.RegisterServeCmd("nats-infrastructure", description, "0.0.1", 8334)
+	magicapp.RegisterSnifferCmd("nats-infrastructure")
 	magicapp.RegisterCmds()
 	magicapp.Execute(name, "nats-infrastructure", "")
 }
