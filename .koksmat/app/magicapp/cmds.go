@@ -12,7 +12,6 @@ import (
 	swgui "github.com/swaggest/swgui/v4emb"
 
 	"github.com/365admin/nats-infrastructure/endpoints"
-	"github.com/365admin/nats-infrastructure/sniffer"
 )
 
 func StartAPIServer(title string, version string, description string, port int) {
@@ -60,7 +59,7 @@ func RegisterSnifferCmd(title string) {
 		Short: "Receive messages from NATS",
 
 		Run: func(cmd *cobra.Command, args []string) {
-			fmt.Println(sniffer.WhatsCooking())
+			fmt.Println(WhatsCooking())
 		},
 	}
 	RootCmd.AddCommand(listCmd)

@@ -14,6 +14,15 @@
             "args": ["service"]
         }, 
         {
+            "name": "App Sniffer",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "cwd": "${workspaceFolder}/.koksmat/app",
+            "program": "${workspaceFolder}/.koksmat/app",
+            "args": ["snif"]
+        }, 
+        {
             "name": "App REST API",
             "type": "go",
             "request": "launch",
