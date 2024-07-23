@@ -29,7 +29,7 @@ func Subscribe() usecase.Interactor {
 	}
 	u := usecase.NewInteractor(func(ctx context.Context, input Request, output *string) error {
 
-		number := fmt.Sprintf("%n", len(msgsMeta))
+		number := fmt.Sprintf("%d", len(msgsMeta))
 		output = &number
 		return nil
 
@@ -69,7 +69,7 @@ func StartSnifferAPIServer(title string, version string, description string, por
 	s.OpenAPI.Info.Version = version
 
 	// sharedSettings(s)
-	//endpoints.AddEndpoints(s, Authenticator)
+	AddEndpoints(s, Authenticator)
 	// addAdminEndpoints(s, Authenticator)
 	// addExchangeEndpoints(s, Authenticator)
 	// addCoreEndpoints(s, Authenticator)

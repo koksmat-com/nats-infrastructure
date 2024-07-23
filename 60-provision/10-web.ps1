@@ -100,27 +100,6 @@ spec:
         volumeMounts:
         - mountPath: /data
           name: data          
-      volumes:
-      - name: data
-        persistentVolumeClaim:
-          claimName: pvc-$appname      
-          
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: $appname
-spec:
-  selector:
-    matchLabels:
-      app: $appname-api
-  replicas: 1
-  template:
-    metadata:
-      labels:
-        app: $appname-api
-    spec: 
-      containers:
       - name: $appname-api
         image: $image
         ports:
@@ -133,11 +112,13 @@ spec:
         volumeMounts:
         - mountPath: /data
           name: data          
-        command: ["nats-infrastructure", "snif"]
+        command: ["nats-infrastructure", "snif"]          
       volumes:
       - name: data
         persistentVolumeClaim:
-          claimName: pvc-$appname                
+          claimName: pvc-$appname      
+          
+
 
 
 "@

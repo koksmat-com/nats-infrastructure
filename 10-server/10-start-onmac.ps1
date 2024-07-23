@@ -19,5 +19,5 @@ else {
    
 }
 #/opt/homebrew/opt/nats-server/bin/nats-server  -js  -c dev.conf
-
-/opt/homebrew/opt/nats-server/bin/nats-server   -c dev.conf -js
+/opt/homebrew/opt/nats-server/bin/nats-server   -c /Users/nielsgregersjohansen/kitchens/nats-infrastructure/.koksmat/nats/dev.conf -js 
+# /opt/homebrew/opt/nats-server/bin/nats-server   -c dev.conf -js
